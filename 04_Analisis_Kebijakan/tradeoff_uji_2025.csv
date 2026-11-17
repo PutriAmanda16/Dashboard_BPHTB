@@ -1,0 +1,2 @@
+﻿periode_uji,bobot_historis_terpilih,MAE_baseline_miliar,MAE_skenario_miliar,penurunan_MAE_persen,shortfall_baseline_miliar,shortfall_skenario_miliar,penurunan_shortfall_miliar,bulan_gagal_baseline,bulan_gagal_skenario,perubahan_bulan_gagal,lolos_guardrail_uji,catatan
+2025,0.5,40.85124821716666,27.299511858724163,33.17337156113565,358.512090456,277.20167230534497,81.31041815065504,6,8,2,False,Hasil pengujian 2025 digunakan untuk menilai skenario yang telah dipilih berdasarkan validasi 2023-2024

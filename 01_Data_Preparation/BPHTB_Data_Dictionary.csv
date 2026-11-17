@@ -1,0 +1,27 @@
+﻿dataset,variabel,tipe_data,definisi
+Master Bulanan,tahun,int64,Tahun anggaran/pencatatan BPHTB
+Master Bulanan,bulan_ke,int64,Nomor bulan 1 sampai 12
+Master Bulanan,bulan,object,Nama bulan
+Master Bulanan,periode,object,Kunci periode dalam format YYYY-MM
+Master Bulanan,target_rp,int64,Target pendapatan bulanan dalam rupiah
+Master Bulanan,realisasi_rp,float64,Penerimaan yang telah terealisasi
+Master Bulanan,proyeksi_rp,float64,Estimasi penerimaan yang belum terealisasi
+Master Bulanan,nilai_seri_rp,float64,Nilai realisasi atau proyeksi sesuai status
+Master Bulanan,jumlah_sspd,float64,Jumlah berkas SSPD pada periode realisasi
+Master Bulanan,status_nilai,object,Klasifikasi Realisasi atau Proyeksi
+Master Bulanan,sumber_file,object,Nama berkas Excel asli
+Master Bulanan,sel_sumber,object,Alamat sel pada Excel sumber
+Master Bulanan,rasio_realisasi_target,float64,Realisasi dibagi target bulanan
+Rincian Kategori,tahun,int64,Tahun anggaran/pencatatan BPHTB
+Rincian Kategori,bulan_ke,int64,Nomor bulan 1 sampai 12
+Rincian Kategori,bulan,object,Nama bulan
+Rincian Kategori,periode,object,Kunci periode dalam format YYYY-MM
+Rincian Kategori,kategori,object,Kelompok BPHTB berdasarkan jenis hak
+Rincian Kategori,kode_akun,object,Kode sub rincian objek pendapatan
+Rincian Kategori,realisasi_rp,float64,Penerimaan yang telah terealisasi
+Rincian Kategori,proyeksi_rp,float64,Estimasi penerimaan yang belum terealisasi
+Rincian Kategori,nilai_seri_rp,float64,Nilai realisasi atau proyeksi sesuai status
+Rincian Kategori,jumlah_sspd,float64,Jumlah berkas SSPD pada periode realisasi
+Rincian Kategori,status_nilai,object,Klasifikasi Realisasi atau Proyeksi
+Rincian Kategori,sumber_file,object,Nama berkas Excel asli
+Rincian Kategori,sel_sumber,object,Alamat sel pada Excel sumber

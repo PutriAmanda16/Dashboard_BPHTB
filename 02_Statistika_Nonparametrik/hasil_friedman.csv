@@ -1,0 +1,2 @@
+﻿metode,periode,jumlah_tahun,jumlah_bulan,statistik_uji,p_value_asimtotik,p_value_permutasi,kendalls_w,alpha
+Friedman,2021-2025,5,12,37.64615384615385,8.975346657576201e-05,1.999960000799984e-05,0.6844755244755245,0.05

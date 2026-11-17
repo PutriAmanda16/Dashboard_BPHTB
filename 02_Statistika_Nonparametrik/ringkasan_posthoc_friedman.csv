@@ -1,0 +1,2 @@
+﻿metode,dasar_pengujian,periode,jumlah_pasangan,pasangan_signifikan,alpha,kesimpulan,batasan
+Wilcoxon berpasangan + Holm,Uji lanjut Friedman,2021-2025,66,0,0.05,Tidak ada pasangan bulan signifikan setelah koreksi Holm,Jumlah blok tahun hanya 5; daya uji perbandingan pasangan terbatas

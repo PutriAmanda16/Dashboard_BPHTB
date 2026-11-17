@@ -1,0 +1,2 @@
+﻿model_terpilih,dasar_pemilihan,periode_latih_akhir,periode_uji_akhir,MAE_uji_2026_miliar,catatan
+Seasonal Naive,MAE minimum validasi 2024-2025,2021-2025,2026-01 s.d. 2026-08,29.545635133625,One-step-ahead dengan aktual lag diketahui

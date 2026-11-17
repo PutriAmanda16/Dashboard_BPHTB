@@ -1,0 +1,4 @@
+﻿tahun_uji,jumlah_data_latih,jumlah_data_uji,batas_nominal_miliar,batas_relatif_persen,pelampauan_nominal,pelampauan_relatif,tingkat_pelampauan_nominal,tingkat_pelampauan_relatif
+2023,24,12,92.4791942840499,45.08842579013437,1,0,8.333333333333332,0.0
+2024,36,12,101.3249489975,35.27897590534388,1,2,8.333333333333332,16.666666666666664
+2025,48,12,103.7010866559,49.30620199633756,1,0,8.333333333333332,0.0

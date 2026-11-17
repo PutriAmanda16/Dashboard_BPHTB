@@ -1,0 +1,5 @@
+﻿mata_kuliah,analisis,metode_terpilih,periode,catatan
+Statistika Nonparametrik,Friedman + Spearman,Keduanya saling melengkapi,2021-2025,Friedman menguji pola antarbulan; Spearman menguji hubungan SSPD
+Pemodelan Data Bisnis,Pengukuran risiko,Historical Simulation,"Backtest 2023-2025, estimasi 2021-2025",Dipilih berdasarkan pinball loss backtesting nominal
+Pemodelan Data Bisnis,Prediksi penerimaan,Seasonal Naive,Seleksi 2024-2025; uji Jan-Agu 2026,Satu langkah ke depan dengan realisasi lag diketahui
+Statistika Sains Data dan Analisis Kebijakan,Simulasi redistribusi target,Bobot historis 50%,Seleksi 2023-2024; uji 2025,Bukan rekomendasi resmi tanpa verifikasi kebijakan
