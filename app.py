@@ -1,7 +1,5 @@
-
 # =============================================================
 # DASHBOARD ANALISIS BPHTB KOTA SURABAYA
-# REVISI: TABS, LOGO, KPI, FILTER BULAN, SIDEBAR
 # =============================================================
 
 from pathlib import Path
@@ -1717,6 +1715,11 @@ required = {
         "kendalls_w"
     ],
 
+    "spearman": [
+        "tahun",
+        "spearman_rho"
+    ],
+
     "rank": [
         "bulan_ke",
         "bulan",
@@ -2283,14 +2286,6 @@ with st.sidebar:
         )
     )
 
-    html(
-        f'''
-        <div class="sidebar-year">
-            Tahun dipilih: {year}
-        </div>
-        '''
-    )
-
 
 # =============================================================
 # 18. MENU NAVIGASI
@@ -2345,11 +2340,9 @@ with st.sidebar:
     html(
         '''
         <div class="sidebar-note">
-            Filter tahun berlaku untuk pemantauan
-            realisasi. Uji statistik historis,
-            evaluasi risiko, prediksi, dan simulasi
-            kebijakan tetap memakai periode
-            analisisnya masing-masing.
+            Filter tahun hanya berlaku untuk
+            pemantauan realisasi; analisis lain
+            memakai periodenya masing-masing.
         </div>
         '''
     )
@@ -2593,114 +2586,6 @@ if page == "Beranda":
         )
 
     attention(akt)
-
-    # ---------------------------------------------------------
-    # INSIGHT
-    # ---------------------------------------------------------
-
-    st.subheader(
-        "Tiga insight utama"
-    )
-
-    failed = akt[
-        akt.shortfall_rp > 0
-    ]
-
-    cols = st.columns(
-        3,
-        gap="small"
-    )
-
-    with cols[0]:
-
-        insight(
-            "Realisasi tertinggi",
-
-            f"{peak.bulan} · "
-            f"{uang(peak.realisasi_rp)}",
-
-            "Bulan dengan penerimaan nominal "
-            "tertinggi pada tahun pilihan."
-        )
-
-    with cols[1]:
-
-        insight(
-            "Capaian bulanan",
-
-            f"{len(akt) - len(failed)} "
-            f"dari {len(akt)} bulan",
-
-            "Jumlah bulan yang mencapai "
-            "atau melampaui target."
-        )
-
-    with cols[2]:
-
-        if failed.empty:
-
-            insight(
-                "Shortfall tertinggi",
-                "Tidak ada",
-
-                "Seluruh target bulanan tercapai."
-            )
-
-        else:
-
-            worst = failed.loc[
-                failed.shortfall_rp.idxmax()
-            ]
-
-            insight(
-                "Shortfall tertinggi",
-
-                f"{worst.bulan} · "
-                f"{uang(worst.shortfall_rp)}",
-
-                "Bulan dengan kekurangan "
-                "nominal terbesar."
-            )
-
-    # ---------------------------------------------------------
-    # AKSES CEPAT
-    # ---------------------------------------------------------
-
-    st.subheader(
-        "Akses cepat"
-    )
-
-    names = [
-        "Pola Penerimaan",
-        "Risiko Pendapatan",
-        "Evaluasi Kebijakan"
-    ]
-
-    icons = [
-        ":material/monitoring:",
-        ":material/shield:",
-        ":material/account_balance:"
-    ]
-
-    for col, name, ico in zip(
-        st.columns(3),
-        names,
-        icons
-    ):
-
-        with col:
-
-            st.button(
-                "Buka " + name,
-
-                icon=ico,
-                use_container_width=True,
-
-                on_click=navigate,
-                args=(name,),
-
-                key="quick_" + name
-            )
 
 
 # =============================================================
@@ -3514,12 +3399,6 @@ elif page == "Validasi Data":
                         f"{r.tindak_lanjut}."
                     )
 
-            st.caption(
-                "Kesamaan nominal kategori tidak "
-                "otomatis mengonfirmasi cakupan "
-                "SSPD dan target kategori."
-            )
-
 
 # =============================================================
 # HALAMAN 4 - POLA PENERIMAAN
@@ -3743,14 +3622,10 @@ elif page == "Pola Penerimaan":
 
         "Hasil pengujian",
 
-        "Friedman mendukung perbedaan peringkat "
-        "antarbulan secara keseluruhan. "
-
         f"Pada uji lanjut Holm, {n_sig} dari "
-        f"{len(d['posthoc'])} pasangan signifikan. "
-
-        "Spearman menunjukkan hubungan SSPD "
-        "dan realisasi, bukan kausalitas."
+        f"{len(d['posthoc'])} pasangan bulan "
+        "signifikan (daya uji terbatas: "
+        "hanya 5 tahun pengamatan)."
     )
 
     a, b = st.columns(2)
@@ -4086,9 +3961,7 @@ elif page == "Risiko Pendapatan":
         f"{uang(extreme.shortfall_rp)}. "
 
         f"Batas {name} {fmt(conf, 0)}% "
-        f"adalah {uang(limit_rp * 1e9)}; "
-
-        "bukan jaminan hasil masa depan.",
+        f"adalah {uang(limit_rp * 1e9)}.",
 
         "risk_shortfall",
 
@@ -4578,16 +4451,8 @@ elif page == "Evaluasi Prediksi":
         )
 
         st.markdown(
-            "**Interpretasi:** kesalahan absolut "
-            "terbesar pada "
-
-            f"{pr.loc[err.abs().idxmax(), 'periode']} "
-
-            f"sebesar "
-            f"{uang(err.abs().max() * 1e9)}; "
-
-            "nilai positif berarti prediksi "
-            "di atas aktual."
+            "**Interpretasi:** nilai positif "
+            "berarti prediksi di atas aktual."
         )
 
 
@@ -4956,10 +4821,7 @@ elif page == "Evaluasi Kebijakan":
                     "menurunkan MAE tetapi menambah "
                     "bulan gagal "
 
-                    f"dari {fail0} menjadi {fail1}. "
-
-                    "Tidak selalu unggul "
-                    "di semua indikator."
+                    f"dari {fail0} menjadi {fail1}."
                 )
 
             st.caption(
@@ -5129,10 +4991,7 @@ elif page == "Evaluasi Kebijakan":
 
                     f"{row.bulan}, "
 
-                    f"{fmt(row.rata_gap_share_pp)} pp; "
-
-                    "bahan evaluasi, bukan keputusan "
-                    "kebijakan otomatis."
+                    f"{fmt(row.rata_gap_share_pp)} pp."
                 )
 
 
