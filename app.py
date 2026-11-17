@@ -65,10 +65,18 @@ html, body,
     background: #F6F8FB;
 }
 
+
+/* Jarak konten dari header Streamlit */
 .block-container {
     max-width: 1480px;
-    padding: 1.15rem 1.6rem 2.7rem;
+    padding: 5rem 1.6rem 2.7rem !important;
 }
+
+/* Memastikan banner tampil utuh */
+.hero {
+    margin-top: 0 !important;
+}
+
 
 h1, h2, h3, h4, h5 {
     color: #193B61;
